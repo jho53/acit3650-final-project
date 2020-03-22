@@ -38,7 +38,7 @@ export default class ListItem extends Component {
         <FlatList
           style={{ borderWidth: 2, borderColor: "red", width: "100%" }}
           // data={this.state.items}
-          data={["asda","asdasd"]}
+          data={["asda", "asdasd"]}
           renderItem={({ item }) => {
             <View style={{ borderWidth: 2, borderColor: "red" }}>
               <Text> {item.name} </Text>
