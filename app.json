@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "ACIT Final Project",
-    "slug": "ACIT-Final-Project",
+    "slug": "acit-final-project",
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": [

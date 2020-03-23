@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Text, View, StyleSheet, Button, Image, FlatList } from "react-native";
+import { List, ListItem } from "react-native-elements"
 import { db } from "../db";
 
 let itemsRef = db.ref("/items");
 
-export default class ListItem extends Component {
+export default class ListItemScreen extends Component {
   constructor() {
     super();
     this.state = {
@@ -21,28 +22,27 @@ export default class ListItem extends Component {
     itemsRef.on("value", snapshot => {
       let data = snapshot.val();
       let items = Object.values(data);
-      console.log(items);
-      this.setState({ items: items });
+      this.setState({ items });
     });
   }
 
   render() {
-    // try {
-    //   console.log(this.state.items);
-    // } catch (e) {
-    //   console.log(e);
-    // }
+    try {
+      console.log(this.state.items);
+      console.log(this.state.items[0].name)
+    } catch (e) {
+      console.log(e);
+    }
     return (
       <View style={styles.container}>
         <Text>ListItem Screen</Text>
         <FlatList
           style={{ borderWidth: 2, borderColor: "red", width: "100%" }}
-          // data={this.state.items}
-          data={["asda", "asdasd"]}
+          extraData={this.state.items}
+          data={this.state.items}
           renderItem={({ item }) => {
             <View style={{ borderWidth: 2, borderColor: "red" }}>
-              <Text> {item.name} </Text>
-              <Text>asdasd</Text>
+              <Text>{item.name}</Text>
             </View>
           }}
         />

@@ -4,7 +4,7 @@ import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import Home from "./view/Home";
 import AddItem from "./view/AddItem";
-import ListItem from "./view/ListItem";
+import ListItemScreen from "./view/ListItem";
 
 const RootStack = createStackNavigator(
   {
@@ -15,7 +15,7 @@ const RootStack = createStackNavigator(
       screen: AddItem
     },
     List: {
-      screen: ListItem
+      screen: ListItemScreen
     }
   },
   {
