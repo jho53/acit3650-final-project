@@ -35,9 +35,9 @@ const RootStack = createStackNavigator(
       screen: Main
     }
   },
-    {
-      initialRouteName: 'Loading',
-    }
+  {
+    initialRouteName: 'Loading',
+  }
 );
 
 const AppContainer = createAppContainer(RootStack);
