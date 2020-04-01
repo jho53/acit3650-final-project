@@ -2,8 +2,15 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
+<<<<<<< Updated upstream
   "packagerPid": 9232,
   "expoServerNgrokUrl": "https://gk-jg5.jho53.acit3650-final-project.exp.direct",
   "packagerNgrokUrl": "https://packager.gk-jg5.jho53.acit3650-final-project.exp.direct",
   "ngrokPid": 1472
+=======
+  "packagerPid": 19228,
+  "expoServerNgrokUrl": "https://6n-adv.jho53.acit3650-final-project.exp.direct",
+  "packagerNgrokUrl": "https://packager.6n-adv.jho53.acit3650-final-project.exp.direct",
+  "ngrokPid": 18380
+>>>>>>> Stashed changes
 }
