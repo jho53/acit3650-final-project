@@ -1,12 +1,7 @@
 {
   "expo": {
-<<<<<<< Updated upstream
-    "name": "ACIT Final Project",
-    "slug": "ACIT-Final-Project",
-=======
     "name": "Student Performance Tracker",
     "slug": "rn-final-project",
->>>>>>> Stashed changes
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": [
