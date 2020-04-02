@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, Platform, Image, Text, View, Button } from 'react-native'
+// import grabUserSignUpInfo from "../../api/userApi"
 import * as firebase from 'firebase';
+import "@firebase/firestore";
 
-export default class Main extends Component {
+export default class LoggedInScreen extends Component {
 
   constructor() {
     super();
     this.state = {
-      currentUser: null
+      currentUser: null,
+      userName: "",
+      selectedSchool: ""
     }
   }
 
@@ -16,15 +20,16 @@ export default class Main extends Component {
     firebase
       .auth()
       .signOut()
-      .then(() => this.props.navigation.navigate("Loading"))
+      .then(() => this.props.navigation.navigate("LandingScreen"))
       .catch(error => this.setState({ errorMessage: error.message }));
   };
 
 
   componentDidMount() {
     const { currentUser } = firebase.auth()
-
     this.setState({ currentUser })
+    // let a = grabUserSignUpInfo()
+    // console.log(a)
   }
 
   render() {

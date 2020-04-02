@@ -1,40 +1,19 @@
 import React from 'react';
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
+import MainNavigation from "./navigation/MainNavigation"
+import * as firebase from "firebase";
+import "@firebase/firestore";
 
-import MainScreen from './views/MainScreen'
-import SignUp from './views/SignUp'
-import LoginScreen from './views/LoginScreen'
-import Main from './views/Main'
-
-const RootStack = createStackNavigator(
-  {
-    MainScreen: {
-      screen: MainScreen
-    },
-    SignUp: {
-      screen: SignUp,
-    },
-    LoginScreen: {
-      screen: LoginScreen
-    },
-    Main: {
-      screen: Main
-    }
-  },
-  {
-    initialRouteName: 'MainScreen',
-    defaultNavigationOptions: {
-      headerShown: false,
-    }
-  }
-);
-
-const AppContainer = createAppContainer(RootStack);
+firebase.initializeApp({
+  apiKey: "AIzaSyCyqqFtfwOYLgF_h4dqOtPj5ykWGTHqDVU",
+  authDomain: "acit-react-native-finalproject.firebaseapp.com/",
+  databaseURL: "https://acit-react-native-finalproject.firebaseio.com/",
+  projectId: "acit-react-native-finalproject",
+  storageBucket: "acit-react-native-finalproject.appspot.com",
+  messagingSenderId: "350342567320"
+})
 
 export default class App extends React.Component {
-
   render() {
-    return <AppContainer />;
+    return <MainNavigation />;
   }
 }
