@@ -24,7 +24,7 @@ export default class UserDataEdit extends Component {
             user_data : navigation.getParam("user_data"),
             course_data: navigation.getParam("course_data"),
             course_name: navigation.getParam("course_name"),
-            user_uid: '123',
+            user_uid: navigation.getParam("user_uid"),
             new_term_input: navigation.getParam("course_data")['term'],
             isLoading: false,
             new_item_name: '',
@@ -54,7 +54,7 @@ export default class UserDataEdit extends Component {
                         temp_course_data['term'] = this.state.new_term_input;
                         temp_user_data[this.state.course_name] = temp_course_data;
 
-                        const updateRef = firebase.firestore().collection('user_data').doc("123");
+                        const updateRef = firebase.firestore().collection('user_data').doc(this.state.user_uid);
                         updateRef.set(temp_user_data).then((docRef) => {
                             this.setState({
                                 new_course_name: "",
@@ -72,6 +72,7 @@ export default class UserDataEdit extends Component {
             ]
         );
     }
+
     addNewItem() {
         if (
             this.state.new_item_name !== '' && this.state.new_item_name !== null &&
@@ -92,7 +93,7 @@ export default class UserDataEdit extends Component {
             temp_course_data['term'] = this.state.new_term_input;
             temp_user_data[this.state.course_name] = temp_course_data;
 
-            const updateRef = firebase.firestore().collection('user_data').doc("123");
+            const updateRef = firebase.firestore().collection('user_data').doc(this.state.user_uid);
             updateRef.set(temp_user_data).then((docRef) => {
                 this.setState({
                     new_item_name: "",
