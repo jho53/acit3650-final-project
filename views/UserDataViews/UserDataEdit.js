@@ -61,7 +61,6 @@ export default class UserDataEdit extends Component {
                                 user_data: temp_user_data,
                                 isLoading: false,
                             });
-                            this.props.navigation.navigate('LoggedInScreen');
                         })
                             .catch((error) => {
                                 console.error("Error Deleting Item: ", error);

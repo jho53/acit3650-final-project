@@ -42,7 +42,7 @@ export default class LoggedInScreen extends Component {
     new_data[this.state.new_course_name] = {};
     console.log(new_data);
     const { navigation } = this.props;
-    const updateRef = firebase.firestore().collection('user_data').doc("123");
+    const updateRef = firebase.firestore().collection('user_data').doc(this.state.currentUser.uid);
     updateRef.set(new_data).then((docRef) => {
       this.setState({
         new_course_name: "",
@@ -68,22 +68,25 @@ export default class LoggedInScreen extends Component {
 
   async load(id) {
     const doc = await this.ref.doc(id).get();
+    this.setState({loading:true});
     if (doc.exists) {
       this.setState({ user_data: doc.data(), loading: false });
     } else {
-      return 'error'
+      this.ref.doc(id).set({});
+      this.setState({loading:false});
+      this.props.navigation.navigate('LoggedInScreen');
     }
   }
 
   onBackPress = () => {
     return true
-  }
+  };
 
   componentDidMount() {
     const { currentUser } = firebase.auth();
     this.setState({ currentUser });
     /*this.load(currentUser.uid);*/
-    this.load('123');
+    this.load(currentUser.uid);
 
     // Disable Back Button
     BackHandler.addEventListener('hardwareBackPress', () => {
