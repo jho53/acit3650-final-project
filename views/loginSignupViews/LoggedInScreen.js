@@ -8,9 +8,7 @@ import { decode, encode } from 'base-64'
 
 global.crypto = require("@firebase/firestore");
 global.crypto.getRandomValues = byteArray => { for (let i = 0; i < byteArray.length; i++) { byteArray[i] = Math.floor(256 * Math.random()); } };
-
 if (!global.btoa) { global.btoa = encode; }
-
 if (!global.atob) { global.atob = decode; }
 
 
@@ -20,12 +18,37 @@ export default class LoggedInScreen extends Component {
     super(props);
     this.ref = firebase.firestore().collection('user_data');
     this.state = {
+        isLoading: null,
       currentUser: null,
       userName: "",
       selectedSchool: "",
       user_data : null,
       new_course_name: "",
     }
+  }
+
+  addCourse() {
+        this.setState({
+            isLoading: true,
+        });
+        var new_data = this.state.user_data;
+        new_data[this.state.new_course_name] = {};
+        console.log(new_data);
+        const { navigation } = this.props;
+        const updateRef = firebase.firestore().collection('user_data').doc("123");
+        updateRef.set(new_data).then((docRef) => {
+            this.setState({
+                new_course_name: "",
+                isLoading: false,
+            });
+            this.props.navigation.navigate('LoggedInScreen');
+        })
+            .catch((error) => {
+                console.error("Error adding document: ", error);
+                this.setState({
+                    isLoading: false,
+                });
+            });
   }
 
   handleLogout = () => {
@@ -35,6 +58,7 @@ export default class LoggedInScreen extends Component {
       .then(() => this.props.navigation.navigate("LandingScreen"))
       .catch(error => this.setState({ errorMessage: error.message }));
   };
+
 
   async load(id) {
     const doc = await this.ref.doc(id).get();
@@ -90,16 +114,18 @@ export default class LoggedInScreen extends Component {
                             course_data: this.state.user_data[item],
                             course_name: item,
                             user_data: this.state.user_data,
+                            user_uid: this.state.currentUser.uid,
                         })}/>
                     <Text style={styles.course_name}>{item}</Text>
                     <Text style={styles.course_name}>{this.state.user_data[item]['term']}</Text>
                 </TouchableOpacity>
             )}
         />
-        <View style={styles.new_course}>
+        <View>
           <TextInput
               style={styles.new_course_input}
               placeholder="Enter New Course Name"
+              value = {this.state.new_course_name}
               onChangeText={this.enter_course_name}
           />
           <Button title="Add Course" onPress={() => this.addCourse()} />
