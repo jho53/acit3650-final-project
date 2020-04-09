@@ -19,7 +19,7 @@ export default class LoginScreen extends Component {
   handleLogin = () => {
     firebase
       .auth()
-      .signInWithEmailAndPassword("aaa@aaa.aaa", "aaaaaa")
+      .signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(() => this.props.navigation.navigate('LoggedInScreen'))
       .catch(error => this.setState({ errorMessage: error.message }))
   };

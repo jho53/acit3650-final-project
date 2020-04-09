@@ -93,11 +93,12 @@ export default StyleSheet.create({
         marginTop: "45%",
     },
     modalView: {
-        top: "100%",
+        top: 90,
+        left: 25,
         margin: 45,
-        backgroundColor: "rgba(235,235,235,0.85)",
+        backgroundColor: "rgba(235,235,235,0.9)",
         borderRadius: 20,
-        padding: 10,
+        padding: 8,
         alignItems: "center",
         shadowColor: "#000",
         shadowOffset: {
@@ -106,12 +107,14 @@ export default StyleSheet.create({
         },
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
-        elevation: 5
+        elevation: 5,
+        position: "absolute"
     },
     openButton: {
-        backgroundColor: "#F194FF",
-        borderRadius: 20,
-        padding: 10,
+        backgroundColor: "#91C0CC",
+        borderRadius: 18,
+        padding: 5,
+        paddingHorizontal: 10,
         elevation: 2
     },
     textStyle: {
@@ -125,7 +128,11 @@ export default StyleSheet.create({
         fontSize: 20
     },
     courseTextInput: {
-        backgroundColor: "white"
+        backgroundColor: "white",
+        width: "75%",
+        padding: 2.5,
+        margin: 1,
+        borderRadius: 8
     },
     /**---------Userdata Graph Page---------*/
     userDataHeaderStyle: {
@@ -145,18 +152,24 @@ export default StyleSheet.create({
         backgroundColor: '#fff'
     },
     head: {
-        height: 40,
-        backgroundColor: '#f1f8ff'
+        height: 30,
+        backgroundColor: '#f1f8ff',
     },
-    text: {
-        margin: 6
+    tableText: {
+        marginLeft: 4,
+        fontFamily: DEFAULT_FONTFAMILY,
+        fontSize: 14
+    },
+    rowText: {
+        marginLeft: 4,
+        fontFamily: DEFAULT_FONTFAMILY,
+        fontSize: 12
     },
     table: {
-        borderWidth: 2,
         borderColor: 'black'
     },
     row: {
         height: 40,
-        backgroundColor: '#E7E6E1'
+        backgroundColor: '#E7E6E1',
     }
 })
