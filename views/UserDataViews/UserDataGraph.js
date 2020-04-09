@@ -24,7 +24,7 @@ export default class UserDataGraph extends Component {
         const tableHead = ['Item Name', 'Work Type', 'Weight', 'Percentage'];
         var work_list = [];
         const graph_label = ['Scores Available', 'Your Score'];
-        if (course_data != null){
+        if (typeof course_data['work'] !== "undefined"){
             work_list = Object.keys(course_data['work']);
             var temp_max_score = [];
             var temp_user_score = [];
@@ -43,9 +43,9 @@ export default class UserDataGraph extends Component {
             var graph_legends = work_list;
             var graph_color = temp_color;
         }else{
-            var graph_legends = ["None"];
-            var graph_data = [[0], [0]];
-            var graph_color = ["000000"]
+            var graph_legends = [];
+            var graph_data = [];
+            var graph_color = []
         }
         const chartConfig = {
             backgroundGradientFrom: "#1E2923",

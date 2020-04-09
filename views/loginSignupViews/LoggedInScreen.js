@@ -31,6 +31,30 @@ export default class LoggedInScreen extends Component {
     }
   }
 
+  addCourse() {
+        this.setState({
+            isLoading: true,
+        });
+        var new_data = this.state.user_data;
+        new_data[this.state.new_course_name] = {};
+        console.log(new_data);
+        const { navigation } = this.props;
+        const updateRef = firebase.firestore().collection('user_data').doc("123");
+        updateRef.set(new_data).then((docRef) => {
+            this.setState({
+                new_course_name: "",
+                isLoading: false,
+            });
+            this.props.navigation.navigate('LoggedInScreen');
+        })
+            .catch((error) => {
+                console.error("Error adding document: ", error);
+                this.setState({
+                    isLoading: false,
+                });
+            });
+  }
+
   handleLogout = () => {
     firebase
       .auth()
@@ -106,10 +130,11 @@ export default class LoggedInScreen extends Component {
               >
                 <Button title={'Edit ' + item} onPress={() =>
                   this.props.navigation.navigate("EditData", {
-                    someId: 100,
-                    course_data: this.state.user_data[item],
-                    course_name: item,
-                    user_data: this.state.user_data,
+                      someId: 100,
+                      course_data: this.state.user_data[item],
+                      course_name: item,
+                      user_data: this.state.user_data,
+                      user_uid: this.state.currentUser.uid,
                   })} />
                 <Text style={styles.course_name}>{item}</Text>
                 <Text style={styles.course_name}>{this.state.user_data[item]['term']}</Text>
@@ -117,11 +142,12 @@ export default class LoggedInScreen extends Component {
             )}
           />
           <View style={styles.new_course}>
-            <TextInput
-              style={styles.new_course_input}
-              placeholder="Enter New Course Name"
-              onChangeText={this.enter_course_name}
-            />
+              <TextInput
+                  style={styles.new_course_input}
+                  placeholder="Enter New Course Name"
+                  value = {this.state.new_course_name}
+                  onChangeText={this.enter_course_name}
+              />
             <Button title="Add Course" onPress={() => this.addCourse()} />
           </View>
         </ImageBackground>
