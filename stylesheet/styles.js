@@ -2,6 +2,10 @@ import { StyleSheet } from "react-native";
 
 const DEFAULT_FONTFAMILY = "sans-serif-light"
 
+const PRIMARY_COLOUR = "#33616d"
+const SECONDARY_COLOUR = "#39336d"
+const TERTIARY_COLOUR = "#336d3e"
+
 export default StyleSheet.create({
     /**---------Global Style-----------*/
     globalContainer: {
@@ -44,5 +48,22 @@ export default StyleSheet.create({
         color: "aliceblue",
         fontFamily: DEFAULT_FONTFAMILY,
         textDecorationLine: 'underline'
+    },
+    headerStyle: {
+        height: 80,
+        width: "100%",
+        backgroundColor: "#91C0CC",
+        opacity: 0.85,
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        padding: 16
+    },
+    headerFont: {
+        fontFamily: DEFAULT_FONTFAMILY,
+        color: "white",
+        fontSize: 28,
+        top: 14
     }
+    /**---------LoggedIn Main Page---------*/
 })
