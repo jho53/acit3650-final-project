@@ -243,6 +243,7 @@ export default class LoggedInScreen extends Component {
                       placeholder="Enter New Course Name"
                       value={this.state.new_course_name}
                       onChangeText={this.enter_course_name}
+                      autoCapitalize
                     />
                     <TextInput
                       style={styles.courseTextInput}

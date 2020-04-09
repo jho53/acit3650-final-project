@@ -13,7 +13,7 @@ export default class LandingScreen extends Component {
 
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
-      this.props.navigation.navigate(user ? 'LoggedInScreen' : 'SignUp')
+      this.props.navigation.navigate(user ? 'LoggedInScreen' : 'LoginScreen')
     })
   }
 
