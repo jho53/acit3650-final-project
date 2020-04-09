@@ -31,8 +31,43 @@ export default class LoggedInScreen extends Component {
       user_data: null,
       new_course_name: "",
       loading: true,
-      modalVisible: true
+      modalVisible: true,
+      new_term: "",
     }
+  }
+
+  delete_course(item_name){
+    Alert.alert(
+        'Delete',
+        'Are You sure you want to Delete ' + item_name + "?",
+        [
+          {text: 'NO', onPress: () => console.warn('NO Pressed'), style: 'cancel'},
+          {text: 'YES', onPress: () => {
+              this.setState({
+                isLoading: true,
+              });
+              var temp_user_data = this.state.user_data;
+              delete temp_user_data[item_name];
+
+              const updateRef = firebase.firestore().collection('user_data').doc(this.state.currentUser.uid);
+              updateRef.set(temp_user_data).then((docRef) => {
+                this.setState({
+                  new_course_name: "",
+                  new_term: "",
+                  user_data: temp_user_data,
+                  isLoading: false,
+                });
+                this.props.navigation.navigate('LoggedInScreen');
+              })
+                  .catch((error) => {
+                    console.error("Error Deleting Item: ", error);
+                    this.setState({
+                      isLoading: false,
+                    });
+                  });
+            }}
+        ]
+    );
   }
 
   addCourse() {
@@ -40,13 +75,14 @@ export default class LoggedInScreen extends Component {
       isLoading: true,
     });
     var new_data = this.state.user_data;
-    new_data[this.state.new_course_name] = {};
+    new_data[this.state.new_course_name] = {term: this.state.new_term, work:{}};
     console.log(new_data);
     const { navigation } = this.props;
     const updateRef = firebase.firestore().collection('user_data').doc(this.state.currentUser.uid);
     updateRef.set(new_data).then((docRef) => {
       this.setState({
         new_course_name: "",
+        new_term: "",
         isLoading: false,
       });
       this.props.navigation.navigate('LoggedInScreen');
@@ -178,6 +214,7 @@ export default class LoggedInScreen extends Component {
                       name="delete-empty"
                       size={30}
                       color={"rgb(255,150,150)"}
+                      onPress={()=>{this.delete_course(item)}}
                     />
                   </View>
                 </View>
@@ -207,6 +244,8 @@ export default class LoggedInScreen extends Component {
                     <TextInput
                       style={styles.courseTextInput}
                       placeholder="Enter Semester Year"
+                      value = {this.state.new_term}
+                      onChangeText={(new_term) => {this.setState({new_term}) }}
                     // value={this.state.new_course_name}
                     // onChangeText={this.enter_course_name}
                     />
@@ -222,7 +261,8 @@ export default class LoggedInScreen extends Component {
                       <TouchableHighlight
                         style={{ ...styles.openButton, backgroundColor: "#2196F3" }}
                         onPress={() => {
-                          this.setState({ modalVisible: false })
+                          this.setState({ modalVisible: false });
+                          this.addCourse()
                         }}
                       >
                         <Text style={styles.textStyle}>Submit</Text>
