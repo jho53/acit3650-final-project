@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="fd3ee2e0-3509-428b-a4ad-797eae834f47" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.expo/packager-info.json" beforeDir="false" afterPath="$PROJECT_DIR$/.expo/packager-info.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/UserDataViews/UserDataGraph.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/UserDataViews/UserDataGraph.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/loginSignupViews/LoggedInScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/loginSignupViews/LoggedInScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/UserDataViews/UserDataEdit.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/UserDataViews/UserDataEdit.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -30,11 +28,29 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/UserDataViews/UserDataEdit.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="22" column="19" lean-forward="true" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+            <state relative-caret-position="248">
+              <caret line="195" column="1" lean-forward="true" selection-start-line="195" selection-start-column="1" selection-end-line="195" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../acit3650-final-project - Copy/views/UserDataViews/UserDataEdit.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="10" column="43" lean-forward="true" selection-end-line="205" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/UserDataViews/UserDataGraph.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-364">
+              <caret line="22" column="63" selection-start-line="22" selection-start-column="63" selection-end-line="22" selection-end-column="63" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -42,11 +58,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/loginSignupViews/LoggedInScreen.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="22" lean-forward="true" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
+            <state relative-caret-position="-976">
+              <caret line="35" selection-start-line="35" selection-end-line="35" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -105,9 +121,9 @@
         <option value="$PROJECT_DIR$/navigation/MainNavigation.js" />
         <option value="$PROJECT_DIR$/App.js" />
         <option value="$PROJECT_DIR$/views/loginSignupViews/LandingScreen.js" />
-        <option value="$PROJECT_DIR$/views/UserDataViews/UserDataEdit.js" />
         <option value="$PROJECT_DIR$/views/UserDataViews/UserDataGraph.js" />
         <option value="$PROJECT_DIR$/views/loginSignupViews/LoggedInScreen.js" />
+        <option value="$PROJECT_DIR$/views/UserDataViews/UserDataEdit.js" />
       </list>
     </option>
   </component>
@@ -144,6 +160,12 @@
               <item name="acit3650-final-project" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="loginSignupViews" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="acit3650-final-project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="acit3650-final-project" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="UserDataViews" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -186,7 +208,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33966000" />
+    <option name="totallyTimeSpent" value="33976000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
@@ -273,18 +295,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/UserDataViews/UserDataGraph.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="68" column="10" selection-start-line="68" selection-start-column="10" selection-end-line="68" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/UserDataViews/UserDataEdit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="22" column="19" lean-forward="true" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+        <state relative-caret-position="-364">
+          <caret line="22" column="63" selection-start-line="22" selection-start-column="63" selection-end-line="22" selection-end-column="63" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
@@ -310,11 +322,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/loginSignupViews/LoggedInScreen.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="22" lean-forward="true" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
+        <state relative-caret-position="-976">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../acit3650-final-project - Copy/views/UserDataViews/UserDataEdit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="10" column="43" lean-forward="true" selection-end-line="205" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/UserDataViews/UserDataEdit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="195" column="1" lean-forward="true" selection-start-line="195" selection-start-column="1" selection-end-line="195" selection-end-column="1" />
         </state>
       </provider>
     </entry>
