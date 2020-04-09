@@ -22,39 +22,39 @@ firebase.initializeApp({
 });
 
 const screenNavigator = createStackNavigator(
-    {
-      //-------Login/Signup Screens-------
-      LandingScreen: {
-        screen: LandingScreen
-      },
-      SignUp: {
-        screen: SignUp,
-      },
-      LoginScreen: {
-        screen: LoginScreen
-      },
-      //-------Screens after login-------
-      LoggedInScreen: {
-        screen: LoggedInScreen
-      },
-      //-------User Data with Graphs-------
-      UserData: {
-        screen: UserDataGraph
-      },
-      EditData: {
-        screen: UserDataEdit
-      },
-
+  {
+    //-------Login/Signup Screens-------
+    LandingScreen: {
+      screen: LandingScreen
     },
-    {
-      initialRouteName: 'LandingScreen',
-      defaultNavigationOptions: {
-        headerShown: false,
-      }
+    SignUp: {
+      screen: SignUp,
+    },
+    LoginScreen: {
+      screen: LoginScreen
+    },
+    //-------Screens after login-------
+    LoggedInScreen: {
+      screen: LoggedInScreen
+    },
+    //-------User Data with Graphs-------
+    UserData: {
+      screen: UserDataGraph
+    },
+    EditData: {
+      screen: UserDataEdit
+    },
+
+  },
+  {
+    initialRouteName: 'LandingScreen',
+    defaultNavigationOptions: {
+      headerShown: false,
     }
+  }
 );
 
-const AppContainer =  createAppContainer(screenNavigator);
+const AppContainer = createAppContainer(screenNavigator);
 
 export default class App extends React.Component {
   render() {

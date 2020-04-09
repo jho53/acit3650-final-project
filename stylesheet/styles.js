@@ -126,5 +126,37 @@ export default StyleSheet.create({
     },
     courseTextInput: {
         backgroundColor: "white"
+    },
+    /**---------Userdata Graph Page---------*/
+    userDataHeaderStyle: {
+        height: "12.5%",
+        width: "100%",
+        backgroundColor: "#91C0CC",
+        opacity: 0.85,
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        padding: 16
+    },
+    container: {
+        flex: 1,
+        padding: 16,
+        paddingTop: 30,
+        backgroundColor: '#fff'
+    },
+    head: {
+        height: 40,
+        backgroundColor: '#f1f8ff'
+    },
+    text: {
+        margin: 6
+    },
+    table: {
+        borderWidth: 2,
+        borderColor: 'black'
+    },
+    row: {
+        height: 40,
+        backgroundColor: '#E7E6E1'
     }
 })
