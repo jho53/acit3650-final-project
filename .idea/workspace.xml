@@ -4,8 +4,7 @@
     <list default="true" id="fd3ee2e0-3509-428b-a4ad-797eae834f47" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.expo/packager-info.json" beforeDir="false" afterPath="$PROJECT_DIR$/.expo/packager-info.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/UserDataViews/UserDataGraph.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/UserDataViews/UserDataGraph.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/loginSignupViews/LoggedInScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/loginSignupViews/LoggedInScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/UserDataViews/UserDataEdit.js" beforeDir="false" afterPath="$PROJECT_DIR$/views/UserDataViews/UserDataEdit.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -30,11 +29,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/UserDataViews/UserDataEdit.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="22" column="19" lean-forward="true" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+            <state relative-caret-position="316">
+              <caret line="29" column="30" lean-forward="true" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/UserDataViews/UserDataGraph.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="146">
+              <caret line="22" column="63" lean-forward="true" selection-start-line="22" selection-start-column="63" selection-end-line="22" selection-end-column="63" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -45,10 +56,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/loginSignupViews/LoggedInScreen.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="22" lean-forward="true" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
+            <state relative-caret-position="299">
+              <caret line="50" column="15" lean-forward="true" selection-start-line="30" selection-start-column="8" selection-end-line="50" selection-end-column="15" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
+                <element signature="e#250#287#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -90,6 +102,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>firestore</find>
+      <find>course_data</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -105,9 +118,9 @@
         <option value="$PROJECT_DIR$/navigation/MainNavigation.js" />
         <option value="$PROJECT_DIR$/App.js" />
         <option value="$PROJECT_DIR$/views/loginSignupViews/LandingScreen.js" />
-        <option value="$PROJECT_DIR$/views/UserDataViews/UserDataEdit.js" />
         <option value="$PROJECT_DIR$/views/UserDataViews/UserDataGraph.js" />
         <option value="$PROJECT_DIR$/views/loginSignupViews/LoggedInScreen.js" />
+        <option value="$PROJECT_DIR$/views/UserDataViews/UserDataEdit.js" />
       </list>
     </option>
   </component>
@@ -145,6 +158,12 @@
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="loginSignupViews" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="acit3650-final-project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="acit3650-final-project" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="UserDataViews" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -181,12 +200,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1586262781689</updated>
-      <workItem from="1586262782890" duration="33507000" />
+      <workItem from="1586262782890" duration="38466000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33966000" />
+    <option name="totallyTimeSpent" value="45789000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
@@ -271,20 +290,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/UserDataViews/UserDataGraph.js">
+    <entry file="file://$PROJECT_DIR$/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="68" column="10" selection-start-line="68" selection-start-column="10" selection-end-line="68" selection-end-column="10" />
+        <state relative-caret-position="-160">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/UserDataViews/UserDataEdit.js">
+    <entry file="file://$PROJECT_DIR$/views/UserDataViews/UserDataGraph.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="22" column="19" lean-forward="true" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+        <state relative-caret-position="146">
+          <caret line="22" column="63" lean-forward="true" selection-start-line="22" selection-start-column="63" selection-end-line="22" selection-end-column="63" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
@@ -300,18 +319,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/db.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="40" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
+        <state relative-caret-position="299">
+          <caret line="50" column="15" lean-forward="true" selection-start-line="30" selection-start-column="8" selection-end-line="50" selection-end-column="15" />
           <folding>
-            <element signature="e#0#37#0" expanded="true" />
+            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#250#287#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/loginSignupViews/LoggedInScreen.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="22" lean-forward="true" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
+        <state relative-caret-position="316">
+          <caret line="29" column="30" lean-forward="true" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
