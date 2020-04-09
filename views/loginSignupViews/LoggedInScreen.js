@@ -113,7 +113,7 @@ export default class LoggedInScreen extends Component {
       this.setState({ user_data: doc.data(), loading: false });
     } else {
       this.ref.doc(id).set({});
-      this.setState({ loading: false });
+      this.setState({ user_data: {}, loading: false });
       this.props.navigation.navigate('LoggedInScreen');
     }
   }
