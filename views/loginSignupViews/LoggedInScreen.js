@@ -12,9 +12,7 @@ import styles from "../../stylesheet/styles"
 
 global.crypto = require("@firebase/firestore");
 global.crypto.getRandomValues = byteArray => { for (let i = 0; i < byteArray.length; i++) { byteArray[i] = Math.floor(256 * Math.random()); } };
-
 if (!global.btoa) { global.btoa = encode; }
-
 if (!global.atob) { global.atob = decode; }
 
 
@@ -24,6 +22,7 @@ export default class LoggedInScreen extends Component {
     super(props);
     this.ref = firebase.firestore().collection('user_data');
     this.state = {
+        isLoading: null,
       currentUser: null,
       userName: "",
       selectedSchool: "",
@@ -65,6 +64,7 @@ export default class LoggedInScreen extends Component {
       .then(() => this.props.navigation.navigate("LandingScreen"))
       .catch(error => this.setState({ errorMessage: error.message }));
   };
+
 
   async load(id) {
     const doc = await this.ref.doc(id).get();

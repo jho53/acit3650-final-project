@@ -44,9 +44,9 @@ export default class UserDataEdit extends Component {
             [
                 {text: 'NO', onPress: () => console.warn('NO Pressed'), style: 'cancel'},
                 {text: 'YES', onPress: () => {
-                        var temp_course_data = this.state.course_data;
-                        delete temp_course_data['work'][item_name];
-                        this.setState({course_data:temp_course_data});
+                    var temp_course_data = this.state.course_data;
+                    delete temp_course_data['work'][item_name];
+                    this.setState({course_data:temp_course_data});
                         this.setState({
                             isLoading: true,
                         });
@@ -69,7 +69,7 @@ export default class UserDataEdit extends Component {
                                     isLoading: false,
                                 });
                             });
-                    }}
+                }}
             ]
         );
     }
