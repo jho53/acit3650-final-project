@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ImageBackground, ActivityIndicator, Image, Text, View, Button, FlatList, TouchableOpacity, TextInput } from 'react-native'
-import { AntDesign } from "@expo/vector-icons";
+import { ImageBackground, ActivityIndicator, Alert, Text, View, TouchableHighlight, FlatList, Modal, BackHandler, TextInput } from 'react-native'
+import { AntDesign, Ionicons, MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
+import DialogInput from 'react-native-dialog-input';
+import ActionButton from "react-native-action-button";
 import * as firebase from 'firebase';
 import "@firebase/firestore";
 import { decode, encode } from 'base-64'
@@ -27,32 +29,33 @@ export default class LoggedInScreen extends Component {
       selectedSchool: "",
       user_data: null,
       new_course_name: "",
-      loading: true
+      loading: true,
+      modalVisible: false
     }
   }
 
   addCourse() {
+    this.setState({
+      isLoading: true,
+    });
+    var new_data = this.state.user_data;
+    new_data[this.state.new_course_name] = {};
+    console.log(new_data);
+    const { navigation } = this.props;
+    const updateRef = firebase.firestore().collection('user_data').doc("123");
+    updateRef.set(new_data).then((docRef) => {
+      this.setState({
+        new_course_name: "",
+        isLoading: false,
+      });
+      this.props.navigation.navigate('LoggedInScreen');
+    })
+      .catch((error) => {
+        console.error("Error adding document: ", error);
         this.setState({
-            isLoading: true,
+          isLoading: false,
         });
-        var new_data = this.state.user_data;
-        new_data[this.state.new_course_name] = {};
-        console.log(new_data);
-        const { navigation } = this.props;
-        const updateRef = firebase.firestore().collection('user_data').doc("123");
-        updateRef.set(new_data).then((docRef) => {
-            this.setState({
-                new_course_name: "",
-                isLoading: false,
-            });
-            this.props.navigation.navigate('LoggedInScreen');
-        })
-            .catch((error) => {
-                console.error("Error adding document: ", error);
-                this.setState({
-                    isLoading: false,
-                });
-            });
+      });
   }
 
   handleLogout = () => {
@@ -66,10 +69,14 @@ export default class LoggedInScreen extends Component {
   async load(id) {
     const doc = await this.ref.doc(id).get();
     if (doc.exists) {
-      this.setState({ user_data: doc.data() });
+      this.setState({ user_data: doc.data(), loading: false });
     } else {
       return 'error'
     }
+  }
+
+  onBackPress = () => {
+    return true
   }
 
   componentDidMount() {
@@ -77,9 +84,14 @@ export default class LoggedInScreen extends Component {
     this.setState({ currentUser });
     /*this.load(currentUser.uid);*/
     this.load('123');
-    // let a = grabUserSignUpInfo()
-    // console.log(a)
-    this.setState({ loading: false })
+
+    // Disable Back Button
+    BackHandler.addEventListener('hardwareBackPress', () => {
+      this.onBackPress
+    });
+  }
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this.onBackPress);
   }
 
   enter_course_name = userInput => {
@@ -100,7 +112,7 @@ export default class LoggedInScreen extends Component {
           style={styles.globalContainer}
         >
           <Text style={styles.bigTitle}>Loading</Text>
-          <ActivityIndicator size="large" />
+          <ActivityIndicator size="large" style={{ color: "white" }} />
         </ImageBackground>
       )
     } else {
@@ -109,47 +121,129 @@ export default class LoggedInScreen extends Component {
           <View style={styles.headerStyle}>
             <Text style={styles.headerFont}>Dashboard</Text>
             <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
-              <Text style={{ fontFamily: "sans-serif-light", color: "white", fontSize: 14, top: 14 }}>
-                Welcome {currentUser && currentUser.email}! {"  "}
+              <Text style={{ fontFamily: "sans-serif-light", color: "white", fontSize: 14.5, top: 14 }}>
+                Welcome {currentUser && currentUser.email}! {"   "}
               </Text>
-              <AntDesign name="logout" size={16} color={"white"} style={{ top: 14 }} />
+              <AntDesign name="logout" size={16} color={"white"} style={{ top: 14 }}
+                onPress={() => {
+                  Alert.alert("Confirm",
+                    "Are you sure you want to log out?",
+                    [
+                      {
+                        text: "Cancel",
+                        onPress: () => null,
+                      },
+                      {
+                        text: "Yes",
+                        onPress: () => this.handleLogout()
+                      }
+                    ])
+                }} />
             </View>
           </View>
-          <FlatList
-            data={course_list}
-            renderItem={({ item }) => (
-
-              <TouchableOpacity
-                onPress={() =>
-                  this.props.navigation.navigate("UserData", {
-                    someId: 100,
-                    course_data: this.state.user_data[item],
-                    course_name: item,
-                  })
-                }
-              >
-                <Button title={'Edit ' + item} onPress={() =>
-                  this.props.navigation.navigate("EditData", {
+          <View style={styles.courseContainer}>
+            <FlatList
+              data={course_list}
+              extraData={course_list}
+              renderItem={({ item }) => (
+                <View style={styles.courseTab}>
+                  <Text style={styles.courseName}>{item} ({this.state.user_data[item]['term']}) </Text>
+                  <View style={{ flexDirection: "row" }}>
+                    <Ionicons name="md-stats" size={36} color={"lightgreen"} style={{ paddingHorizontal: 5 }}
+                      onPress={() => this.props.navigation.navigate("UserData", {
+                        someId: 100,
+                        course_data: this.state.user_data[item],
+                        course_name: item,
+                      })}
+                    />
+                    <MaterialIcons
+                      name="edit"
+                      size={34}
+                      color={"lightblue"}
+                      style={{ paddingHorizontal: 5 }}
+                      onPress={() =>
+                        this.props.navigation.navigate("EditData", {
+                          someId: 100,
+                          course_data: this.state.user_data[item],
+                          course_name: item,
+                          user_data: this.state.user_data,
+                          user_uid: this.state.currentUser.uid,
+                        })}
+                    />
+                    <MaterialCommunityIcons
+                      name="delete-empty"
+                      size={30}
+                      color={"rgb(255,150,150)"}
+                    />
+                    {/* <Button title="userdata"
+                    onPress={() => this.props.navigation.navigate("UserData", {
                       someId: 100,
                       course_data: this.state.user_data[item],
                       course_name: item,
-                      user_data: this.state.user_data,
-                      user_uid: this.state.currentUser.uid,
-                  })} />
-                <Text style={styles.course_name}>{item}</Text>
-                <Text style={styles.course_name}>{this.state.user_data[item]['term']}</Text>
-              </TouchableOpacity>
-            )}
-          />
-          <View style={styles.new_course}>
+                    })} />
+                  <Button title={'Edit ' + item}
+                    onPress={() =>
+                      this.props.navigation.navigate("EditData", {
+                        someId: 100,
+                        course_data: this.state.user_data[item],
+                        course_name: item,
+                        user_data: this.state.user_data,
+                        user_uid: this.state.currentUser.uid,
+                      })} /> */}
+                  </View>
+                </View>
+              )}
+            />
+            <ActionButton buttonColor={"lightgreen"}>
+              <ActionButton.Item buttonColor='#9b59b6' title="Add New Course"
+                onPress={() => this.setState({ modalVisible: true })}>
+                <MaterialIcons name="class" size={24} />
+              </ActionButton.Item>
+            </ActionButton>
+            <View style={styles.centeredView}>
+              <Modal
+                animationType="fade"
+                transparent={true}
+                visible={this.state.modalVisible}
+              >
+                <View style={{ width: "80%" }}>
+                  <View style={styles.modalView}>
+                    <Text style={styles.modalText}>Add Course</Text>
+                    <TextInput
+                      style={styles.new_course_input}
+                      placeholder="Enter New Course Name"
+                      value={this.state.new_course_name}
+                      onChangeText={this.enter_course_name}
+                    />
+                    <TouchableHighlight
+                      style={{ ...styles.openButton, backgroundColor: "#2196F3" }}
+                      onPress={() => {
+                        this.setState({ modalVisible: false })
+                      }}
+                    >
+                      <Text style={styles.textStyle}>Hide Modal</Text>
+                    </TouchableHighlight>
+                  </View>
+                </View>
+              </Modal>
+            </View>
+            {/* <View style={styles.new_course}>
               <TextInput
-                  style={styles.new_course_input}
-                  placeholder="Enter New Course Name"
-                  value = {this.state.new_course_name}
-                  onChangeText={this.enter_course_name}
+                style={styles.new_course_input}
+                placeholder="Enter New Course Name"
+                value={this.state.new_course_name}
+                onChangeText={this.enter_course_name}
               />
-            <Button title="Add Course" onPress={() => this.addCourse()} />
+              <Button title="Add Course" onPress={() => this.addCourse()} />
+            </View> */}
           </View>
+          {/* <DialogInput isDialogVisible={this.state.isDialogVisible}
+            title={"Add Course"}
+            message={"Message for DialogInput #1"}
+            hintInput={"Course name"}
+            submitInput={(inputText) => { this.sendInput(inputText) }}
+            closeDialog={() => { this.setState({ isDialogVisible: false }) }}>
+          </DialogInput> */}
         </ImageBackground>
       )
     }
