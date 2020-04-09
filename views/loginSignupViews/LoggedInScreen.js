@@ -24,13 +24,14 @@ export default class LoggedInScreen extends Component {
     super(props);
     this.ref = firebase.firestore().collection('user_data');
     this.state = {
+      isLoading: null,
       currentUser: null,
       userName: "",
       selectedSchool: "",
       user_data: null,
       new_course_name: "",
       loading: true,
-      modalVisible: false
+      modalVisible: true
     }
   }
 
@@ -178,21 +179,6 @@ export default class LoggedInScreen extends Component {
                       size={30}
                       color={"rgb(255,150,150)"}
                     />
-                    {/* <Button title="userdata"
-                    onPress={() => this.props.navigation.navigate("UserData", {
-                      someId: 100,
-                      course_data: this.state.user_data[item],
-                      course_name: item,
-                    })} />
-                  <Button title={'Edit ' + item}
-                    onPress={() =>
-                      this.props.navigation.navigate("EditData", {
-                        someId: 100,
-                        course_data: this.state.user_data[item],
-                        course_name: item,
-                        user_data: this.state.user_data,
-                        user_uid: this.state.currentUser.uid,
-                      })} /> */}
                   </View>
                 </View>
               )}
@@ -209,23 +195,39 @@ export default class LoggedInScreen extends Component {
                 transparent={true}
                 visible={this.state.modalVisible}
               >
-                <View style={{ width: "80%" }}>
+                <View style={{ width: "100%" }}>
                   <View style={styles.modalView}>
                     <Text style={styles.modalText}>Add Course</Text>
                     <TextInput
-                      style={styles.new_course_input}
+                      style={styles.courseTextInput}
                       placeholder="Enter New Course Name"
                       value={this.state.new_course_name}
                       onChangeText={this.enter_course_name}
                     />
-                    <TouchableHighlight
-                      style={{ ...styles.openButton, backgroundColor: "#2196F3" }}
-                      onPress={() => {
-                        this.setState({ modalVisible: false })
-                      }}
-                    >
-                      <Text style={styles.textStyle}>Hide Modal</Text>
-                    </TouchableHighlight>
+                    <TextInput
+                      style={styles.courseTextInput}
+                      placeholder="Enter Semester Year"
+                    // value={this.state.new_course_name}
+                    // onChangeText={this.enter_course_name}
+                    />
+                    <View style={{ flexDirection: "row", width: "80%", justifyContent: "space-evenly", marginTop: 10 }}>
+                      <TouchableHighlight
+                        style={{ ...styles.openButton, backgroundColor: "#2196F3" }}
+                        onPress={() => {
+                          this.setState({ modalVisible: false })
+                        }}
+                      >
+                        <Text style={styles.textStyle}>Cancel</Text>
+                      </TouchableHighlight>
+                      <TouchableHighlight
+                        style={{ ...styles.openButton, backgroundColor: "#2196F3" }}
+                        onPress={() => {
+                          this.setState({ modalVisible: false })
+                        }}
+                      >
+                        <Text style={styles.textStyle}>Submit</Text>
+                      </TouchableHighlight>
+                    </View>
                   </View>
                 </View>
               </Modal>
@@ -252,20 +254,3 @@ export default class LoggedInScreen extends Component {
     }
   }
 }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     padding: 16,
-//     paddingTop: 30
-//   },
-//   course_name: {
-//     fontSize: 30,
-//   },
-//   new_course_input: {
-//     height: 30,
-//     fontSize: 18,
-//   }
-// });

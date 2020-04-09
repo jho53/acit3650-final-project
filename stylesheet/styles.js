@@ -86,19 +86,18 @@ export default StyleSheet.create({
     courseName: {
         fontFamily: DEFAULT_FONTFAMILY,
         fontSize: 14
-    }, 
+    },
     centeredView: {
-        // height: "100%",
-        // width: "100%",
         justifyContent: "center",
         alignItems: "center",
-        marginTop: 22
+        marginTop: "45%",
     },
     modalView: {
-        margin: 20,
-        backgroundColor: "white",
+        top: "100%",
+        margin: 45,
+        backgroundColor: "rgba(235,235,235,0.85)",
         borderRadius: 20,
-        padding: 35,
+        padding: 10,
         alignItems: "center",
         shadowColor: "#000",
         shadowOffset: {
@@ -122,6 +121,10 @@ export default StyleSheet.create({
     },
     modalText: {
         marginBottom: 15,
-        textAlign: "center"
+        textAlign: "center",
+        fontSize: 20
+    },
+    courseTextInput: {
+        backgroundColor: "white"
     }
 })
