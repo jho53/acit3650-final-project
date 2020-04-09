@@ -2,6 +2,10 @@ import { StyleSheet } from "react-native";
 
 const DEFAULT_FONTFAMILY = "sans-serif-light"
 
+const PRIMARY_COLOUR = "#33616d"
+const SECONDARY_COLOUR = "#39336d"
+const TERTIARY_COLOUR = "#336d3e"
+
 export default StyleSheet.create({
     /**---------Global Style-----------*/
     globalContainer: {
@@ -44,5 +48,80 @@ export default StyleSheet.create({
         color: "aliceblue",
         fontFamily: DEFAULT_FONTFAMILY,
         textDecorationLine: 'underline'
+    },
+    headerStyle: {
+        height: "12.5%",
+        width: "100%",
+        backgroundColor: "#91C0CC",
+        opacity: 0.85,
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        padding: 16
+    },
+    headerFont: {
+        fontFamily: DEFAULT_FONTFAMILY,
+        color: "white",
+        fontSize: 32,
+        top: 14
+    },
+    /**---------LoggedIn Main Page---------*/
+    courseContainer: {
+        width: "100%",
+        height: "87.5%",
+        backgroundColor: "rgba(255, 255, 255, 0.25)",
+        padding: 5
+    },
+    courseTab: {
+        width: "97.5%",
+        height: 50,
+        flexDirection: "row",
+        backgroundColor: "white",
+        justifyContent: "space-between",
+        alignItems: "center",
+        borderRadius: 7.5,
+        margin: 5,
+        padding: 7.5
+    },
+    courseName: {
+        fontFamily: DEFAULT_FONTFAMILY,
+        fontSize: 14
+    }, 
+    centeredView: {
+        // height: "100%",
+        // width: "100%",
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22
+    },
+    modalView: {
+        margin: 20,
+        backgroundColor: "white",
+        borderRadius: 20,
+        padding: 35,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5
+    },
+    openButton: {
+        backgroundColor: "#F194FF",
+        borderRadius: 20,
+        padding: 10,
+        elevation: 2
+    },
+    textStyle: {
+        color: "white",
+        fontWeight: "bold",
+        textAlign: "center"
+    },
+    modalText: {
+        marginBottom: 15,
+        textAlign: "center"
     }
 })

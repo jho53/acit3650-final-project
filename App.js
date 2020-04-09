@@ -1,5 +1,4 @@
 import React from 'react';
-import MainNavigation from "./navigation/MainNavigation"
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import * as firebase from "firebase";
