@@ -6,6 +6,8 @@ import LandingScreen from '../views/loginSignupViews/LandingScreen'
 import SignUp from '../views/loginSignupViews/SignUp'
 import LoginScreen from '../views/loginSignupViews/LoginScreen'
 import LoggedInScreen from '../views/loginSignupViews/LoggedInScreen'
+import UserDataGraph from '../views/UserDataViews/UserDataGraph'
+import UserDataEdit from '../views/UserDataViews/UserDataEdit'
 
 const screenNavigator = createStackNavigator(
     {
@@ -22,7 +24,15 @@ const screenNavigator = createStackNavigator(
         //-------Screens after login-------
         LoggedInScreen: {
             screen: LoggedInScreen
-        }
+        },
+        //-------User Data with Graphs-------
+        UserData: {
+            screen: UserDataGraph
+        },
+        EditData: {
+            screen: UserDataEdit
+        },
+
     },
     {
         initialRouteName: 'LandingScreen',
@@ -30,7 +40,7 @@ const screenNavigator = createStackNavigator(
             headerShown: false,
         }
     }
-)
+);
 
 
 export default createAppContainer(screenNavigator)

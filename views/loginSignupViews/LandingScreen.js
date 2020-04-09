@@ -5,8 +5,8 @@ import styles from "../../stylesheet/styles"
 import firebase from 'firebase';
 
 export default class LandingScreen extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
     }
   }

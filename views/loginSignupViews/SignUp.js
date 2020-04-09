@@ -20,25 +20,25 @@ export default class SignUp extends Component {
   }
 
   handleSignUp = () => {
-    const { email, password, name, selectedSchool } = this.state
+    const { email, password, name, selectedSchool } = this.state;
 
     if (this.state.name == "") {
-      this.setState({ errorMessage: "Name cannot be empty" })
+      this.setState({ errorMessage: "Name cannot be empty" });
       return
     }
     if (this.state.selectedSchool == "0") {
-      this.setState({ errorMessage: "Please select a valid school option" })
+      this.setState({ errorMessage: "Please select a valid school option" });
       return
     }
 
     firebase
       .auth().createUserWithEmailAndPassword(email, password)
       .then(user => {
-        storeUserSignupInfo(name, selectedSchool)
+        storeUserSignupInfo(name, selectedSchool);
         this.props.navigation.navigate('LandingScreen')
       })
       .catch(error => this.setState({ errorMessage: error.message }))
-  }
+  };
 
   componentDidMount() {
     this.setState({ email: "aaa@aaa.aaa", password: "aaaaaa", name: "aaaa", selectedSchool: "BCIT" })

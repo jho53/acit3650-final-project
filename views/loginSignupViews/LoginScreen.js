@@ -22,7 +22,7 @@ export default class LoginScreen extends Component {
       .signInWithEmailAndPassword("aaa@aaa.aaa", "aaaaaa")
       .then(() => this.props.navigation.navigate('LoggedInScreen'))
       .catch(error => this.setState({ errorMessage: error.message }))
-  }
+  };
 
   componentDidMount() {
     this.handleLogin

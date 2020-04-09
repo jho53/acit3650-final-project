@@ -3,6 +3,6 @@
   "minify": false,
   "hostType": "lan",
   "lanType": "ip",
-  "urlRandomness": "7z-9ba",
+  "urlRandomness": "di-nsp",
   "https": false
 }
